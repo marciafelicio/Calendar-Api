@@ -22,6 +22,12 @@ export class UserController {
     findUsers(@Query() findUsersDto: FindUsersDto) {
         return this.userService.findUsers(findUsersDto);
     }
+
+    
+    @Get(":id")
+    getById(@Param('id') id: number) {
+        return this.userService.getUserById(+id);
+    }
     
     @Delete(":id")
     async deleteUser(@Param("id") id: string): Promise<any> {

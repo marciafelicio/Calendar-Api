@@ -40,7 +40,11 @@ export class UserService {
         }
         return this.userModel.findAll({ where });
     }
-    
+
+    getUserById(id) {
+        return this.userModel.findByPk(id);
+    }
+
     deleteUser(id: string) {
         return this.userModel.destroy({ where: { id } });
     }
