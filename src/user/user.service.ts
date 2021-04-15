@@ -38,7 +38,12 @@ export class UserService {
         if (findUsersDto.email) {
             where.email = findUsersDto.email;
         }
-        return this.userModel.findAll({ where });
+        return this.userModel.findAll({
+            where, 
+            attributes: {
+                exclude: ['password']
+            }
+        });
     }
 
     getUserById(id) {
@@ -47,6 +52,10 @@ export class UserService {
 
     deleteUser(id: string) {
         return this.userModel.destroy({ where: { id } });
+    }
+
+    findOneByEmail(email: string) {
+        return this.userModel.findOne({ where: { email } });
     }
 }
 

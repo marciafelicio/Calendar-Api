@@ -1,8 +1,10 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
 import { Task } from './task/task.model';
 
+
 @Table
 export class User extends Model {
+    
     @Column
     name: string;
 
@@ -10,8 +12,13 @@ export class User extends Model {
     email: string;
 
     @Column
+    password: string;
+
+    @Column
     phone: string;
 
     @HasMany(() => Task)
     task: Task[];
+
+   
 }
